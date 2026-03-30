@@ -23,7 +23,7 @@ A professional Product Content Management System built with **Spring Boot** and 
 
 * **Java 21**
 * **Spring Boot 3.5.13**
-* **PostgreSQL** (with JSONB support)
+* **PostgreSQL 18** (with JSONB support)
 * **Liquibase** (Database migration)
 * **MapStruct** (Entity-DTO mapping)
 * **Lombok**
@@ -65,8 +65,17 @@ It populates the database with:
 ## 🏃 Running the Project
 
 1. **Build and Run:**
+   Linux / macOS / Git Bash:
    ```bash
    ./mvnw spring-boot:run
+   ```
+   Windows (Command Prompt):
+   ```bash
+   mvnw spring-boot:run
+   ```
+   Windows (PowerShell):
+   ```bash
+   .\mvnw spring-boot:run
    ```
 2. **Access Swagger UI:**
    Navigate to
@@ -74,7 +83,9 @@ It populates the database with:
    http://localhost:8080/swagger-ui.html
    ```
    to explore and test the API endpoints.
-
+3. **Exit application:**
+   to exit press `Ctrl` + `C`
+   
    ## 🔍 API Filtering Examples
 
 The filtering engine is case-insensitive and supports complex combinations:
