@@ -9,6 +9,7 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import me.jorlowski.pcms_demo.dto.product.CreateProductRequest;
 import me.jorlowski.pcms_demo.dto.product.ProductResponse;
+import me.jorlowski.pcms_demo.dto.product.UpdateAttributesRequest;
 import me.jorlowski.pcms_demo.dto.product.UpdateProductRequest;
 import me.jorlowski.pcms_demo.service.ProductService;
 import org.springdoc.core.annotations.ParameterObject;
@@ -94,13 +95,15 @@ public class ProductController {
      * New keys are added, existing keys are updated. If a key's value is null, the attribute is removed.
      *
      * @param id         the unique identifier of the product
-     * @param attributes a map containing attribute keys and values to be merged or removed
+     * @param request    contains map of attribute keys and values to be merged or removed
      * @return the product data after attribute modification
      */
     @PatchMapping("{id}/attributes")
     @Operation(summary = "Patch product attributes", description = "Merges new attributes or removes them if value is null")
-    public ProductResponse updateProductAttributes(@PathVariable Long id, @RequestBody @NonNull Map<String, Object> attributes) {
-        return productService.updateAttributes(id, attributes);
+    public ProductResponse updateProductAttributes(
+            @PathVariable Long id,
+            @RequestBody @NonNull UpdateAttributesRequest request) {
+        return productService.updateAttributes(id, request.attributes());
     }
 
     /**

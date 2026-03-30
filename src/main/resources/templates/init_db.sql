@@ -30,7 +30,7 @@ FROM generate_series(1, 10) AS s(p_id)
                                 ('is_recycled', to_jsonb(random() > 0.7)),
                                 ('wifi_support', to_jsonb(random() > 0.4))
                            ) AS pool(key, value)
-             WHERE prod.id IS NOT NULL AND s.p_id IS NOT NULL
+             WHERE s.p_id IS NOT NULL
              ORDER BY random()
              LIMIT (floor(random() * 10 + 5))::int
          ) AS random_subset
