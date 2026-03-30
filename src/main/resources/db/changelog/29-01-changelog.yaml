@@ -1,0 +1,68 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1774804022096-1
+      author: jakub
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_producers
+                  name: id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(255)
+            tableName: producers
+  - changeSet:
+      id: 1774804022096-2
+      author: jakub
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_products
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: producer_id
+                  type: BIGINT
+              - column:
+                  name: attributes
+                  type: jsonb
+            tableName: products
+  - changeSet:
+      id: 1774804022096-3
+      author: jakub
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: name
+            constraintName: uc_producers_name
+            tableName: producers
+  - changeSet:
+      id: 1774804022096-4
+      author: jakub
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: producer_id
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_PRODUCER
+            referencedColumnNames: id
+            referencedTableName: producers
+

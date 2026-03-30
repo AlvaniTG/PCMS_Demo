@@ -1,0 +1,8 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1774804022096-5
+      author: jakub
+      changes:
+        - sql:
+            dbms: postgresql
+            sql: CREATE INDEX idx_product_attributes ON products USING GIN (attributes);

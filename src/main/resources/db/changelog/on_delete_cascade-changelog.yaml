@@ -1,0 +1,15 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1774804022096-6
+      author: jakub
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_PRODUCER
+        - addForeignKeyConstraint:
+            baseColumnNames: producer_id
+            baseTableName: products
+            constraintName: FK_PRODUCTS_ON_PRODUCER
+            referencedColumnNames: id
+            referencedTableName: producers
+            onDelete: CASCADE

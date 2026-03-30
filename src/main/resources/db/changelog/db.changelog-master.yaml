@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/29-01-changelog.yaml
+  - include:
+      file: db/changelog/gin_index-changelog.yaml
+  - include:
+      file: db/changelog/on_delete_cascade-changelog.yaml
